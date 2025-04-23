@@ -1,0 +1,71 @@
+<!-- Rafael Alonso e Pedro Rico 1CCOB Arq Comp -->
+
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SPTecher's Machine</title>
+    <link rel="stylesheet" href="../css/pages.css">
+</head>
+
+<body background="../img/cosmos2.jpg">
+    <header>
+        <nav id="navbar">
+            <ul>
+                <li>
+                    <a href="../index.html">Sptech Machine</a>
+                </li>
+                <li>
+                    <a href="../pages/binario.html">Binário</a>
+                </li>
+                <li>
+                    <a href="../pages/octal.html">Octal</a>
+                </li>
+                <li>
+                    <a href="../pages/decimal.html">Decimal</a>
+                </li>
+                <li>
+                    <a href="../pages/hexadecimal.html">Hexadecimal</a>
+                </li>
+                <li>
+                    <a href="../pages/devs.html">Desenvolvedores</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <div id="container">
+        <h1 class="title">Decimal</h1>
+        <h1>Digite um número Decimal:</h1>
+        <input class="ipt" type="text" placeholder="   Numero em Decimal" id="decimalValor">
+        <br>
+        <br>
+        <button onclick="converter()" class="btn">Converter</button>
+        <div class="hide div-resultados" id="resultados">
+            <h2>Resultados</h2>
+            <h2>Octal:</h2>
+            <div id="octal"></div>
+            <h2>Binário:</h2>
+            <div id="binario"></div>
+            <h2>Hexadecimal:</h2>
+            <div id="hexadecimal"></div>
+        </div>
+
+    </div>
+</body>
+<script>
+    function converter() {
+
+        document.getElementById("resultados").classList.remove("hide")
+
+        var decimal = Number(decimalValor.value);
+        octal.innerHTML = decimal.toString(8);
+        binario.innerHTML = decimal.toString(2);
+        hexadecimal.innerHTML = decimal.toString(16);
+    }
+</script>
+
+
+</html>
