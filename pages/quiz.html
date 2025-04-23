@@ -1,4 +1,4 @@
-<!-- Rafael Alonso e Pedro Rico 1CCOB Arq Comp -->
+<!-- Rafael Alonso -->
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -37,15 +37,36 @@
     </header>
 
     <div id="container">
-        <h1 class="title">DESENVOLVEDORES</h1>
-    
-        <h2>Rafael Alonso Rodrigues</h2>
-        <h3>rafael.arodrigues@sptech.school</h3>
+        <h1 class="title">Binário</h1>
+        <h1>Digite um número Binário:</h1>
+        <input class="ipt" type="text" placeholder="   Numero em Binario" id="binarioValor">
         <br>
         <br>
-        <h2>Pedro Henrique Oliveira Rico</h2>
-        <h3>pedro.rico@sptech.school</h3>
+        <button onclick="converter()" class="btn">Converter</button>
+        <div class="hide div-resultados" id="resultados">
+            <h2>Resultados</h2>
+            <h2>Octal:</h2>
+            <div id="octal"></div>
+            <h2>Decimal:</h2>
+            <div id="decimal"></div>
+            <h2>Hexadecimal:</h2>
+            <div id="hexadecimal"></div>
+        </div>
+
     </div>
 </body>
+<script>
+    function converter() {
+
+        document.getElementById("resultados").classList.remove("hide")
+
+        var binario = binarioValor.value;
+        binario = parseInt(binario,2)
+
+        octal.innerHTML = binario.toString(8);
+        decimal.innerHTML = binario
+        hexadecimal.innerHTML = binario.toString(16);
+    }
+</script>
 
 </html>

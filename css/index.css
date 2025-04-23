@@ -1,3 +1,5 @@
+/* Configurações iniciais */
+
 *{
     margin: 0px;
     padding: 0px;
@@ -17,15 +19,19 @@ header{
     align-items: center;
 }
 
+/* NavBar */
+
 #navbar{
     display: flex;
     flex-direction: row;
-    width: 100%;
-    height: 35px;
+    width: 80%;
+    height: 60px;
     align-items: center;
     justify-content: center;
     background-color: rgba(255, 255, 255, 0.219);
     backdrop-filter: blur(2px);
+    margin-top: 20px;
+    border-radius: 30px;
 }
 
 #navbar ul{
@@ -47,6 +53,8 @@ a:hover{
     color: white;
 }
 
+/* Conteudo Principal */
+
 #container-divs{
     display: flex;
     justify-content: center;
@@ -55,18 +63,16 @@ a:hover{
 }
 
 #div-esquerda p {
-    margin-bottom: 40px;
+    margin-bottom: 20px;
 }
 
 .div-esquerda{
-    margin: 10px;
-    height: 85vh;
     width: 50vw;
     display: flex;
     justify-content: center;
     align-items: start;
     flex-direction: column;
-    margin-left: 80px;
+    margin-left: 20px;
 }
 
 .btn{
@@ -79,6 +85,7 @@ a:hover{
     background-color: #ffffff;
     transition-duration: 0.4s;
     border-style: none;
+    margin-top: 10px;
 }
 
 .btn:hover{
@@ -93,6 +100,22 @@ a:hover{
     z-index: 10;
 }
 
+/*Footer com carrinho correndo*/
+#div-carro-correndo{
+    bottom: 0px;
+    height: 45px;
+    display: flex;
+    position: fixed;
+    margin-top: auto;
+}
+#div-carro-correndo img{
+    animation: correr 30s ease-in-out infinite;
+    position: relative;
+    z-index: 10;
+}
+
+/* Animação */
+
 @keyframes flutuar{
     0% {
         transform: translateY(0px);
@@ -102,5 +125,14 @@ a:hover{
     }
     100%{
         transform: translateY(0px);
+    }
+}
+
+@keyframes correr {
+    0%{
+        transform: translateX(-100px);
+    }
+    100%{
+        transform: translateX(2300px);
     }
 }

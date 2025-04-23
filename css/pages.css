@@ -3,15 +3,11 @@
     padding: 0px;
 }
 
-@font-face{
-    font-family: "san francisco";
-    src: url("../font/sf-pro-display/SFPRODISPLAYREGULAR.OTF");
-}
-
 body{
-    font-family: "san francisco";
+    font-family: sans-serif;
     text-align: center;
     color: #ffffff;
+    background-color: #0a15df;
 }
 
 header{

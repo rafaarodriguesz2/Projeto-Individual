@@ -1,4 +1,4 @@
-<!-- Rafael Alonso e Pedro Rico 1CCOB Arq Comp -->
+<!-- Rafael Alonso -->
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -39,33 +39,8 @@
     <div id="container">
         <h1 class="title">Decimal</h1>
         <h1>Digite um número Decimal:</h1>
-        <input class="ipt" type="text" placeholder="   Numero em Decimal" id="decimalValor">
-        <br>
-        <br>
-        <button onclick="converter()" class="btn">Converter</button>
-        <div class="hide div-resultados" id="resultados">
-            <h2>Resultados</h2>
-            <h2>Octal:</h2>
-            <div id="octal"></div>
-            <h2>Binário:</h2>
-            <div id="binario"></div>
-            <h2>Hexadecimal:</h2>
-            <div id="hexadecimal"></div>
-        </div>
 
     </div>
 </body>
-<script>
-    function converter() {
-
-        document.getElementById("resultados").classList.remove("hide")
-
-        var decimal = Number(decimalValor.value);
-        octal.innerHTML = decimal.toString(8);
-        binario.innerHTML = decimal.toString(2);
-        hexadecimal.innerHTML = decimal.toString(16);
-    }
-</script>
-
 
 </html>

@@ -1,4 +1,4 @@
-<!-- Rafael Alonso e Pedro Rico 1CCOB Arq Comp -->
+<!-- Rafael Alonso -->
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -30,43 +30,19 @@
                     <a href="../pages/hexadecimal.html">Hexadecimal</a>
                 </li>
                 <li>
-                    <a href="../pages/devs.html">Desenvolvedores</a>
+                    <a href="../pages/dev.html">Desenvolvedores</a>
                 </li>
             </ul>
         </nav>
     </header>
 
     <div id="container">
-        <h1 class="title">Octal</h1>
-        <h1>Digite um número Octal:</h1>
-        <input class="ipt" type="text" placeholder="   Numero em Octal" id="octalValor">
+        <h1 class="title">DESENVOLVEDORES</h1>
+    
+        <h2>Rafael Alonso Rodrigues</h2>
+        <h3>rafael.arodrigues@sptech.school</h3>
         <br>
-        <br>
-        <button onclick="converter()" class="btn">Converter</button>
-        <div class="hide div-resultados" id="resultados">
-            <h2>Resultados</h2>
-            <h2>Binário:</h2>
-            <div id="binario"></div>
-            <h2>Decimal:</h2>
-            <div id="decimal"></div>
-            <h2>Hexadecimal:</h2>
-            <div id="hexadecimal"></div>
-        </div>
-
     </div>
 </body>
-<script>
-    function converter() {
-
-        document.getElementById("resultados").classList.remove("hide")
-
-        var octal = octalValor.value;
-        octal = parseInt(octal,8)
-
-        binario.innerHTML = octal.toString(2);
-        decimal.innerHTML = octal
-        hexadecimal.innerHTML = octal.toString(16);
-    }
-</script>
 
 </html>
