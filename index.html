@@ -15,17 +15,10 @@
         <nav id="navbar">
             <ul>
                 <li>
-                    <a href="./index.html">QuizZ</a>
+                    <a href="./index.html">Home</a>
                 </li>
                 <li>
-                    <a href="./pages/binario.html">Carros</a>
-                </li>
-                <li>
-                    <a href="./pages/octal.html">Diferença de Preços</a>
-                </li>
-                <li>
-                    <a href="./pages/decimal.html">Carros</a>
-
+                    <a href="./pages/comparar.html">Comparar</a>
                 </li>
                 <li>
                     <a href="./pages/hexadecimal.html">História</a>
@@ -41,15 +34,20 @@
         <div class="div-esquerda" id="div-esquerda">
             <h1>Você sabe mesmo os valores dos carros?</h1>
             <p>Teste agora e descubra o quanto você sabe sobre carros!</p>
-            <button class="btn">Iniciar Quiz!</button>
+            <button class="btn" onclick="iniciarQuiz()">Iniciar Quiz!</button>
         </div>
         <div id="div-direita">
-            <img src="./img/porsche-verde.png" alt="Porsche Verde">
+            <img src="./img/banners/porsche-verde.png" alt="Porsche Verde">
         </div>
     </div>
     <div id="div-carro-correndo">
-        <img src="./img/prosche-verde-nova.png" alt="Porsche Verde Nova">
+        <img src="./img/banners/prosche-verde-nova.png" alt="Porsche Verde Nova">
     </div>
 </body>
+<script>
 
+    function iniciarQuiz(){
+        window.location="./pages/comparar.html"
+    }
+</script>
 </html>

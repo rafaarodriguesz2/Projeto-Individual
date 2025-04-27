@@ -130,7 +130,7 @@ a:hover{
 
 @keyframes correr {
     0%{
-        transform: translateX(-100px);
+        transform: translateX(-300px);
     }
     100%{
         transform: translateX(2300px);
