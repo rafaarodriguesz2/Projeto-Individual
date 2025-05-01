@@ -1,0 +1,21 @@
+:root {
+     --amarelo-fundo: #e5bd00;
+     --amarelo-footer: #f8c300;
+     --color-titulos: rgb(27, 27, 27);
+     --roxo-fundo: #8300e5;
+}
+
+@font-face {
+     font-family: titulo;
+     src: url(fonts/Akira\ Expanded\ Demo.otf);
+}
+
+@font-face {
+     font-family: assinatura;
+     src: url(fonts/Andrea\ Bellarosa.ttf);
+}
+
+@font-face {
+     font-family: quiz;
+     src: url(fonts/Miguel\ De\ Northern.ttf);
+}
