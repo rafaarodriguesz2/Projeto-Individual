@@ -26,6 +26,7 @@ body{
     padding: 0px;
     color: white;
     background-color: var(--roxo-fundo);
+    height: 400vh;
 }
 
 /* NAVBAR */
@@ -50,9 +51,7 @@ body{
 }
 
 /* Conteudo Principal */
-.main-container{
-    position: relative;
-}
+/* Banner Porsche */
 
 .div-sem-blur{
     font-family: "Akira";
@@ -70,6 +69,11 @@ body{
     align-items: center;
     flex-direction: column;
     overflow: hidden;
+
+}
+
+.div-sem-blur h1{
+    margin-top: -50px
 }
 
 .porsche-azul{
@@ -91,6 +95,108 @@ body{
 
 
 .assinatura{
+    font-size: 30px;
+    z-index: 10;
+    font-family: "Andrea";
+    margin-left: -50vh;
+}
+
+/* Banner Quiz */
+
+.banner-quiz p{
+    color: var(--roxo-fundo);
+}
+
+.banner-quiz h1{
+    font-family: "Akira";
+    font-size: 40px;
+    color: black;
+}
+
+.banner-quiz{
+    width: 100%;
+    height: 400px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.banner-quiz button{
+    background-color: #8300e5;
+    color: white;
+    width: 250px;
+    height: 100px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 1px;
+    margin-bottom: 40px;
+    position: absolute;
+    top: 2vw;
+    right: 30vw;
+    font-size: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.banner-quiz button:hover{
+    transition: ease .5s;
+    background-color: #8200e500;
+    color: #8300e5;
+}
+
+.div-texto-banner-quiz{
+    margin-left: 4px;
+    position: absolute;
+    top: 3vh;
+}
+
+.div-img-banner-quiz{
+    position: absolute;
+    left: 60vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.porsche-verde{
+   width: 600px;
+   position: absolute;
+   margin-left: 400px;
+   margin-top: 100px;
+}
+
+/* Abaixo do banner */
+
+.main-descricoes{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.github{
+    margin-left: 90%;
+    width: 100px;
+    height: 50px;
+    border: 2px solid white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+    border-radius: 40px;
+    font-family: "Miguel";
+    font-size: 30px;
+}
+
+.div-descricoes{
+    display: flex;
+    margin-left: 50%;
     font-family: "Andrea";
 }
+
+
+/* Footer */
 
