@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
     <!-- Cabeçalho do site -->
@@ -20,5 +21,23 @@
             </ul>
         </nav>
     </header>
+    <!-- Conteudo Principal -->
+    <main class="main">
+      
+        <div class="form">
+            <h2>Login</h2>
+            <label for="">Digite seu e-mail cadastrado</label>
+            <input type="email" name="" id="">
+            <label for="">Digite sua senha</label>
+            <input type="password" name="" id="">
+            <button onclick="login()">Login</button>
+        </div>
+        
+    </main>
 </body>
+<script>
+    function login() {
+        window.location = "./cadastrar.html"
+    }
+</script>
 </html>

@@ -45,17 +45,59 @@ function converter() {
     <img src="../assets/banco_de_carros/brasil/${numeroAleatorio}.jpg" alt="lambo" class="img-carros">
     <p>Nome: ${carrosBrasil.nome}</p>
     <p>Preço do carro R$ ${carrosBrasil.preco.toLocaleString("pt-BR")}</p> <br>
-    <p>Salario Minimo ${salarioMinimoBrasil.toLocaleString("pt-BR")}</p> <br>
+    <p>Com uma renda de ${salarioMinimoBrasil.toLocaleString("pt-BR")}</p> <br>
     <p>Serão necessarios ${tempoParaComprarBrasil} anos para comprar esse carro<p>
-    <a href="${carrosBrasil.link}">Link</a>
+    <a href="${carrosBrasil.link}" target="_blank">Link</a>
     `
 
     resultadoEua.innerHTML = `
     <img src="../assets/banco_de_carros/eua/${numeroAleatorio}.jpg" alt="lambo" class="img-carros">
     <p>Nome: ${carrosEua.nome}</p>
     <p>Preço do carro $ ${carrosEua.preco.toLocaleString("pt-BR")}</p> <br>
-    <p>Salario Minimo ${salarioMinimoEua.toLocaleString("pt-BR")}</p> <br>
+    <p>Com uma renda de ${salarioMinimoEua.toLocaleString("pt-BR")}</p> <br>
     <p>Serão necessarios ${tempoParaComprarEua} anos para comprar esse carro<p>
-    <a href="${carrosEua.link}">Link</a>
+    <a href="${carrosEua.link}" target="_blank">Link</a>
     `
 }
+
+/*Chart JS*/
+
+const ctx = document.getElementById('myChart');
+const ctx2 = document.getElementById('myChart2');
+
+new Chart(ctx, {
+  type: 'bar',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});
+new Chart(ctx2, {
+  type: 'line',
+  data: {
+    labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+    datasets: [{
+      label: '# of Votes',
+      data: [12, 19, 3, 5, 2, 3],
+      borderWidth: 1
+    }]
+  },
+  options: {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    }
+  }
+});

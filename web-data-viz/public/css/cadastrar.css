@@ -1,0 +1,104 @@
+/* Configurações */
+:root {
+    --amarelo-fundo: #e5bd00;
+    --amarelo-footer: #f8c300;
+    --color-titulos: rgb(27, 27, 27);
+    --roxo-fundo: #8300e5;
+}
+
+@font-face {
+    font-family: "Akira";
+    src: url("../fonts/Akira\ Expanded\ Demo.otf");
+}
+
+@font-face {
+    font-family: "Andrea";
+    src: url("../fonts/Andrea\ Bellarosa.ttf");
+}
+
+@font-face {
+    font-family: "Miguel";
+    src: url("../fonts/Miguel\ De\ Northern.ttf");
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    background-color: var(--roxo-fundo);
+    font-family: sans-serif;
+}
+
+/* NAVBAR */
+
+.ul-navbar li{
+    list-style: none;
+}
+
+.ul-navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0 14%;
+}
+
+.ul-navbar a{
+    font-size: 23px;
+    color: white;
+    font-family: "Akira";
+    text-decoration: none;
+}
+
+.ul-navbar a:hover{
+    color: black;
+    transition: 0.5s;
+}
+
+/*Conteudo Principal*/
+
+.main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+input{
+    width: 400px;
+    height: 30px;
+    border: none;
+    border-bottom: 2px solid black;
+    margin: 20px;
+}
+button{
+    width: 100px;
+    height: 30px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: white;
+    transition: 0.5s ease;
+}
+
+.form{
+    margin-top: 100px;
+    width: 500px;
+    height: 600px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+    border-radius: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.form h2{
+    margin-bottom: 80px;
+}

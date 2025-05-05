@@ -1,0 +1,55 @@
+/* Configurações */
+:root {
+    --amarelo-fundo: #e5bd00;
+    --amarelo-footer: #f8c300;
+    --color-titulos: rgb(27, 27, 27);
+    --roxo-fundo: #8300e5;
+}
+
+@font-face {
+    font-family: "Akira";
+    src: url("../fonts/Akira\ Expanded\ Demo.otf");
+}
+
+@font-face {
+    font-family: "Andrea";
+    src: url("../fonts/Andrea\ Bellarosa.ttf");
+}
+
+@font-face {
+    font-family: "Miguel";
+    src: url("../fonts/Miguel\ De\ Northern.ttf");
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    background-color: var(--roxo-fundo);
+}
+
+/* NAVBAR */
+
+.ul-navbar li{
+    list-style: none;
+}
+
+.ul-navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0 14%;
+}
+
+.ul-navbar a{
+    font-size: 23px;
+    color: white;
+    font-family: "Akira";
+    text-decoration: none;
+}
+
+.ul-navbar a:hover{
+    color: black;
+    transition: 0.5s;
+}

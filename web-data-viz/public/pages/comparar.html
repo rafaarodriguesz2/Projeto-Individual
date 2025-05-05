@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/comparar.css">
     <title>Document</title>
+    <link rel="stylesheet" href="../css/comparar.css">
 
 </head>
+
 <body>
     <!-- Cabeçalho do site -->
     <header>
@@ -36,6 +39,7 @@
                 <div id="resultadoEua"></div>
             </div>
         </div>
+        <p>Escolha o valor da renda mensal</p>
         <select>
             <option value="">1.000</option>
             <option value="">2.500</option>
@@ -46,6 +50,16 @@
         <button onclick="converter()" class="btn">Comparar</button>
     </div>
 
+    <div>
+        <canvas id="myChart"></canvas>
+    </div>
+    <div>
+        <canvas id="myChart2"></canvas>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </body>
 <script src="../js/comparar.js"></script>
+
 </html>
