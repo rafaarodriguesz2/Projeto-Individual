@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/comparar.css">
+    <title>Document</title>
+
+</head>
+<body>
+    <!-- Cabeçalho do site -->
+    <header>
+        <!-- Navegação principal -->
+        <nav>
+            <ul class="ul-navbar">
+                <li><a href="../index.html">HOME</a></li>
+                <li><a href="./comparar.html">COMPARAR</a></li>
+                <li><a href="./historia.html">HISTORIA</a></li>
+                <li><a href="./dev.html">DEV</a></li>
+                <li><a href="./cadastrar.html">CADASTRAR</a></li>
+                <li><a href="./login.html">LOGIN</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Conteudo Principal -->
+
+    <div id="container">
+        <div id="container-divs">
+            <div class="card">
+                <p>Preço no Brasil <img src="../assets/banners/brasil.png" class="img-pais"></p>
+                <div id="resultadoBrasil"></div>
+            </div>
+            <div class="card">
+                <p>Preço no Eua <img src="../assets/banners/eua.png" class="img-pais"></p>
+                <div id="resultadoEua"></div>
+            </div>
+        </div>
+        <select>
+            <option value="">1.000</option>
+            <option value="">2.500</option>
+            <option value="">5.000</option>
+            <option value="">8.000</option>
+            <option value="">10.000</option>
+        </select>
+        <button onclick="converter()" class="btn">Comparar</button>
+    </div>
+
+</body>
+<script src="../js/comparar.js"></script>
+</html>

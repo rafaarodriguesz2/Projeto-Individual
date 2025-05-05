@@ -1,0 +1,159 @@
+/* Configurações */
+:root {
+    --amarelo-fundo: #e5bd00;
+    --amarelo-footer: #f8c300;
+    --color-titulos: rgb(27, 27, 27);
+    --roxo-fundo: #8300e5;
+}
+
+@font-face {
+    font-family: "Akira";
+    src: url("../fonts/Akira\ Expanded\ Demo.otf");
+}
+
+@font-face {
+    font-family: "Andrea";
+    src: url("../fonts/Andrea\ Bellarosa.ttf");
+}
+
+@font-face {
+    font-family: "Miguel";
+    src: url("../fonts/Miguel\ De\ Northern.ttf");
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    background-color: var(--roxo-fundo);
+}
+
+/* NAVBAR */
+
+.ul-navbar li{
+    list-style: none;
+}
+
+.ul-navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    padding: 0 14%;
+}
+
+.ul-navbar a{
+    font-size: 23px;
+    color: white;
+    font-family: "Akira";
+    text-decoration: none;
+}
+
+.ul-navbar a:hover{
+    color: black;
+    transition: 0.5s;
+}
+
+/* Css Comparar */
+
+/* Conteudo Principal */
+
+#container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 120vh;
+}
+
+#container-divs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+#div-esquerda p {
+    margin-bottom: 20px;
+}
+
+.div-esquerda{
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    flex-direction: column;
+    margin-left: 20px;
+    background-color: white;
+}
+
+.btn{
+    height: 40px;
+    width: 200px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: medium;
+    font-family: sans-serif;
+    background-color: #ffffff;
+    transition-duration: 0.4s;
+    border-style: none;
+    margin-top: 10px;
+}
+
+.btn:hover{
+    background-color: rgba(0, 0, 0, 0);
+    color: #ffffff;
+    border: solid 2px;
+}
+
+
+.card{
+    background-color: white;
+    border-radius: 20px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction:column;
+    width: 400px;
+}
+
+.img-pais{
+    width: 40px;
+}
+
+.card p {
+    color: black;
+}
+
+.img-carros{
+    width: 400px;
+    height: 300px;
+    object-fit: cover;
+    animation: aparecer 2s ease-in-out;
+    position: relative;
+    z-index: 10;
+    border-radius: 20px;
+}
+
+/*Footer com carrinho correndo*/
+#div-carro-correndo{
+    bottom: 0px;
+    height: 45px;
+    display: flex;
+    position: fixed;
+    margin-top: auto;
+}
+
+/* Animação */
+
+@keyframes aparecer{
+    0%{
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    100%{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
