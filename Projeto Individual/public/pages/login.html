@@ -48,7 +48,7 @@
             return false;
         }
         else {
-            console.log("Sumir Mensagem")
+            console.log("Tudo Validado")
         }
 
         console.log("FORM LOGIN: ", emailVar);
@@ -63,10 +63,14 @@
                 emailServer: emailVar,
                 senhaServer: senhaVar
             })
+
         }).then(function (resposta) {
             console.log("ESTOU NO THEN DO entrar()!")
 
             if (resposta.ok) {
+
+                console.log("CHEGOU NO OK")
+
                 console.log(resposta);
 
                 resposta.json().then(json => {
@@ -77,10 +81,12 @@
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        window.location = "./dashboard/cards.html";
+                        window.location = "../dashboard/cards.html";
                     }, 1000); // apenas para exibir o loading
 
                 });
+
+                console.log()
 
             } else {
 
