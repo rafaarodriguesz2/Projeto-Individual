@@ -64,7 +64,7 @@ body{
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    height: 120vh;
+    height: 100vh;
 }
 
 #container select{
@@ -143,7 +143,25 @@ border-radius: 60px;
     border-radius: 20px;
 }
 
+.titulo-principal{
+    font-family: "Akira";
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
 
+.hide{
+    display: none;
+}
+
+.centralizar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
 /*Footer com carrinho correndo*/
 #div-carro-correndo{
