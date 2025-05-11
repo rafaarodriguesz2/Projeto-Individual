@@ -40,13 +40,11 @@
         <!-- Banner você sabe sobre carros -->
         <div class="banner-quiz">
             <div class="div-texto-banner-quiz">
-                <h1>Voce sabe mesmo os valores dos carros? <p>Teste agora e descubra!</p>
-                </h1>
-
+                <h1>Voce sabe mesmo os valores dos carros? <p>Teste agora e descubra!</p></h1>
             </div>
             <div class="div-img-banner-quiz">
                 <img src="./assets/imgs/verde.png" alt="Porsche" class="porsche-verde">
-                <button>Iniciar Quiz</button>
+                <button onclick="redirecionarPaginaQuiz();">Iniciar Quiz</button>
             </div>
         </div>
 
@@ -71,12 +69,6 @@
 
     <!-- Rodapé -->
     <footer class="footer">
-        <div>
-        
-        </div>
-        <div id="div-direita">
-            <img src="./img/banners/porsche-verde.png" alt="Porsche Verde">
-        </div>
         <div class="info-footer">
             <input type="text" placeholder="Email Address">
             <button>Enviar</button>
@@ -85,5 +77,11 @@
         </div>
     </footer>
 </body>
+<script>
 
+    function redirecionarPaginaQuiz(){
+        window.location = "./pages/comparar.html"
+    }
+
+</script>
 </html>
