@@ -1,0 +1,70 @@
+/* Configurações */
+:root {
+    --amarelo-fundo: #e5bd00;
+    --amarelo-footer: #f8c300;
+    --color-titulos: rgb(27, 27, 27);
+    --roxo-fundo: #8300e5;
+}
+
+@font-face {
+    font-family: "Akira";
+    src: url("../fonts/Akira\ Expanded\ Demo.otf");
+}
+
+@font-face {
+    font-family: "Andrea";
+    src: url("../fonts/Andrea\ Bellarosa.ttf");
+}
+
+@font-face {
+    font-family: "Miguel";
+    src: url("../fonts/Miguel\ De\ Northern.ttf");
+}
+
+body{
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    background-color: var(--roxo-fundo);
+    font-family: sans-serif;
+}
+
+button{
+    width: 200px;
+    height: 40px;
+    border-radius: 60px;
+    border: none;
+}
+
+button:hover{
+    background-color: #ffffff00;
+    border: 1px solid white;
+    transition: 0.5s;
+    color: white;
+}
+
+main{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* DashBoard */
+
+.div_dashBoard{
+    width: 400px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.dash{
+    background-color: white;
+    margin: 20px;
+    border-radius: 5px;
+}
+

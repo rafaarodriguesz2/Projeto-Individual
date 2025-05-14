@@ -8,6 +8,14 @@ create table usuario(
     senha varchar(45)
 );
 
+create table dashBoard(
+	id int not null primary key auto_increment,
+    assertividade varchar(45)
+);
+
+
+select * from dashboard;
+
 select * from usuario;
 
 truncate table usuario;
