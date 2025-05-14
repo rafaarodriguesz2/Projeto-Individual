@@ -81,45 +81,6 @@
         `
         enviarAssertividade()
     }
-    
-        function enviarAssertividade() {
-        // aguardar();
-
-        //Recupere o valor da nova input pelo nome do id
-        // Agora vá para o método fetch logo abaixo
-        var assertividadeVar = assertividade;
-
-        // Enviando o valor da nova input
-        fetch("/dash/resultadosUsuario", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                assertividadeServer: assertividadeVar
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
-
-                if (resposta.ok) {
-                    setTimeout(() => {
-                        alert("ASSERTIVIDADE ENVIADO")
-                        console.log("++++++++++++", assertividadeVar)
-                    }, "2000");
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
-            });
-
-        return false;
-
-    };
 
     function precoNosEua() {
         resultadoDoChute2.innerHTML = `
@@ -234,6 +195,45 @@
     function dash(){
         divDash.classList.remove("hide")
     }
+
+    function enviarAssertividade() {
+        // Agora vá para o método fetch logo abaixo
+        var assertividadeVar = assertividade;
+        var usuarioVar = sessionStorage.ID_USUARIO
+
+
+        // Enviando o valor da nova input
+        fetch("/dash/resultadosUsuario", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                assertividadeServer: assertividadeVar,
+                usuarioServer: usuarioVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    setTimeout(() => {
+                        console.log("Assertividade", assertividadeVar)
+                        console.log("idUsuario", usuarioVar)
+                    }, "2000");
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
+
+    };
 
     /*Chart JS*/
 

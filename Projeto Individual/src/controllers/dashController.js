@@ -4,11 +4,13 @@ var dashModel = require('../models/dashModel');
 function enviarDesempenhoUsuario(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
     var  { assertividadeServer }  = req.body;
+    var { usuarioServer } = req.body;
 
+    console.log(assertividadeServer)
     console.log(assertividadeServer)
 
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    dashModel.enviarDados(assertividadeServer)
+    dashModel.enviarDados(assertividadeServer, usuarioServer)
         .then(
             function (resultado) {
                 res.json(resultado);

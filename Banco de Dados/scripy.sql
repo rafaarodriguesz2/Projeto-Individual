@@ -10,15 +10,19 @@ create table usuario(
 
 create table dashBoard(
 	id int not null primary key auto_increment,
-    assertividade varchar(45)
+    assertividade varchar(45),
+    fkusuario int,
+    constraint fk_usuario foreign key (fkusuario) references usuario(id)
 );
 
+insert into dashBoard()
 
-select * from dashboard;
+select assertividade from dashBoard;
 
 select * from usuario;
 
 truncate table usuario;
+truncate table dashBoard;
 
 drop database projetoIndividual;
 

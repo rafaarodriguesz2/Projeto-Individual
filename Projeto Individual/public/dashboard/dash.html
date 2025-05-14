@@ -10,8 +10,9 @@
 
 <body>
 
-    
+
     <main>
+        <h2>Bom dia <h2 id="b_usuario">Usuario</h2></h2>
         <h1>Dashboards</h1>
         <div id="div_dash" class="div_dashBoard">
             <div class="div_dash_1 dash">
@@ -26,9 +27,11 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
-<script src="../js/dash.js">
+<script>
+    b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
- function obterDadosGrafico(idAquario) {
+
+    function obterDadosGrafico(idAquario) {
 
         alterarTitulo(idAquario)
 
@@ -179,7 +182,49 @@
             });
 
     }
-</script>
+
+    /*Chart JS*/
+
+    const ctx = document.getElementById('myChart');
+    const ctx2 = document.getElementById('myChart2');
+
+    new Chart(ctx, {
+        type: 'doughnut',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+            datasets: [{
+                label: '# of Votes',
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
 
 </script>
 
