@@ -35,9 +35,15 @@
             <button onclick="entrar()">Login</button>
         </div>
 
+        <button onclick="dash()">dash</button>
     </main>
 </body>
 <script>
+
+    function dash(){
+        window.location = "../dashboard/dash.html"
+    }
+
     function entrar() {
         var emailVar = email_input.value;
         var senhaVar = senha_input.value;
@@ -104,8 +110,9 @@
         })
 
         let valor = sessionStorage.getItem('EMAIL_USUARIO');
+        let idUsuario =  sessionStorage.getItem("ID_USUARIO")
         console.log(valor)
-        
+
         return false;
 
     }

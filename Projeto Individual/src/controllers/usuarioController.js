@@ -22,7 +22,7 @@ function autenticar(req, res) {
                     if (resultadoAutenticar.length == 1 ) {
                         console.log(resultadoAutenticar);
                         res.json(resultadoAutenticar[0]);
-                        res.status(200).send("Email e/ou senha inválido(s)");
+                        // res.status(200).send("Usuário Logado!");
                     } else if (resultadoAutenticar.length == 0) {
                         res.status(403).send("Email e/ou senha inválido(s)");
                     } else {

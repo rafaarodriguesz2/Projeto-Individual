@@ -12,7 +12,8 @@
 
 
     <main>
-        <h2>Bom dia <h2 id="b_usuario">Usuario</h2></h2>
+        <h2>Bom dia <h2 id="b_usuario">Usuario</h2>
+        </h2>
         <h1>Dashboards</h1>
         <div id="div_dash" class="div_dashBoard">
             <div class="div_dash_1 dash">
@@ -22,6 +23,8 @@
                 <canvas id="myChart2"></canvas>
             </div>
         </div>
+
+        <button onclick="chamarGraficos()">VER GRAFICOS</button>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -30,22 +33,28 @@
 <script>
     b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
+    let proximaAtualizacao;
 
-    function obterDadosGrafico(idAquario) {
+    function chamarGraficos(){
+        const idUsuario = sessionStorage.ID_USUARIO;
+        obterDadosGrafico(idUsuario)
+    }
 
-        alterarTitulo(idAquario)
+    function obterDadosGrafico(idUsuario) {
+
+        console.log(idUsuario)
 
         if (proximaAtualizacao != undefined) {
             clearTimeout(proximaAtualizacao);
         }
 
-        fetch(`/medidas/ultimas/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/ultimas/${sessionStorage.ID_USUARIO}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (resposta) {
                     console.log(`Dados recebidos: ${JSON.stringify(resposta)}`);
                     resposta.reverse();
 
-                    plotarGrafico(resposta, idAquario);
+                    plotarGrafico(resposta, idUsuario);
 
                 });
             } else {
@@ -60,7 +69,7 @@
     // Esta função *plotarGrafico* usa os dados capturados na função anterior para criar o gráfico
     // Configura o gráfico (cores, tipo, etc), materializa-o na página e, 
     // A função *plotarGrafico* também invoca a função *atualizarGrafico*
-    function plotarGrafico(resposta, idAquario) {
+    function plotarGrafico(resposta, idUsuario) {
 
         console.log('iniciando plotagem do gráfico...');
 
@@ -108,17 +117,17 @@
 
         // Criando estrutura para plotar gráfico - config
         const config = {
-            type: 'line',
+            type: 'bar',
             data: dados,
         };
 
         // Adicionando gráfico criado em div na tela
         let myChart = new Chart(
-            document.getElementById(`myChartCanvas${idAquario}`),
+            document.getElementById(`myChartCanvas${idUsuario}`),
             config
         );
 
-        setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+        setTimeout(() => atualizarGrafico(idUsuario, dados, myChart), 5000);
     }
 
 
@@ -127,21 +136,19 @@
 
     //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
     //     Para ajustar o "select", ajuste o comando sql em src/models
-    function atualizarGrafico(idAquario, dados, myChart) {
+    function atualizarGrafico(idUsuario, dados, myChart) {
 
-
-
-        fetch(`/medidas/tempo-real/${idAquario}`, { cache: 'no-store' }).then(function (response) {
+        fetch(`/medidas/tempo-real/${idUsuario}`, { cache: 'no-store' }).then(function (response) {
             if (response.ok) {
                 response.json().then(function (novoRegistro) {
 
-                    obterdados(idAquario);
-                    // alertar(novoRegistro, idAquario);
+                    obterdados(idUsuario);
+                    // alertar(novoRegistro, idUsuario);
                     console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
                     console.log(`Dados atuais do gráfico:`);
                     console.log(dados);
 
-                    let avisoCaptura = document.getElementById(`avisoCaptura${idAquario}`)
+                    let avisoCaptura = document.getElementById(`avisoCaptura${idUsuario}`)
                     avisoCaptura.innerHTML = ""
 
 
@@ -169,12 +176,12 @@
                     }
 
                     // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+                    proximaAtualizacao = setTimeout(() => atualizarGrafico(idUsuario, dados, myChart), 2000);
                 });
             } else {
                 console.error('Nenhum dado encontrado ou erro na API');
                 // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(() => atualizarGrafico(idAquario, dados, myChart), 2000);
+                proximaAtualizacao = setTimeout(() => atualizarGrafico(idUsuario, dados, myChart), 2000);
             }
         })
             .catch(function (error) {
@@ -189,7 +196,7 @@
     const ctx2 = document.getElementById('myChart2');
 
     new Chart(ctx, {
-        type: 'doughnut',
+        type: 'bar',
         data: {
             labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
             datasets: [{
@@ -226,6 +233,9 @@
         }
     });
 
+
+
 </script>
 
 </html>
+
