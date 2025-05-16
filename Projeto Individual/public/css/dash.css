@@ -55,7 +55,7 @@ main{
 /* DashBoard */
 
 .div_dashBoard{
-    width: 400px;
+    width: 500px;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -68,3 +68,10 @@ main{
     border-radius: 5px;
 }
 
+#graficos{
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    width: 700px;
+    margin-bottom: 20px;
+}
