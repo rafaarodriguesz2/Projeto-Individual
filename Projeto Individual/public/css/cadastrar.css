@@ -69,7 +69,7 @@ input{
     height: 30px;
     border: none;
     border-bottom: 2px solid black;
-    margin: 20px;
+    margin: 10px;
 }
 button{
     width: 100px;
@@ -77,7 +77,7 @@ button{
     border-radius: 50px;
     border: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    margin-top: 40px;
+    margin-top: 20px;
     cursor: pointer;
 }
 
@@ -87,9 +87,9 @@ button:hover{
 }
 
 .form{
-    margin-top: 100px;
+    margin-top: 20px;
     width: 500px;
-    height: 600px;
+    height: 500px;
     background-color: rgb(255, 255, 255);
     color: black;
     border-radius: 60px;
@@ -100,5 +100,5 @@ button:hover{
 }
 
 .form h2{
-    margin-bottom: 80px;
+    margin-bottom: 40px;
 }
