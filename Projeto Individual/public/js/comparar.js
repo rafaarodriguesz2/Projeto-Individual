@@ -220,6 +220,7 @@ function enviarAssertividade() {
             // Agora vá para o arquivo routes/usuario.js
             assertividadeServer: assertividadeVar,
             usuarioServer: usuarioVar
+            
         }),
     })
         .then(function (resposta) {

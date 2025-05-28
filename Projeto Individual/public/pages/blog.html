@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/blog.css">
+</head>
+
+<body>
+    <!-- Cabeçalho do site -->
+    <header>
+        <!-- Navegação principal -->
+        <nav>
+            <ul class="ul-navbar">
+                <li><a href="../index.html">HOME</a></li>
+                <li><a href="./comparar.html">COMPARAR</a></li>
+                <li><a href="./historia.html">HISTORIA</a></li>
+                <li><a href="./blog.html">BLOG</a></li>
+                <li><a href="./cadastrar.html">CADASTRAR</a></li>
+                <li><a href="./login.html">LOGIN</a></li>
+            </ul>
+        </nav>
+    </header>
+    <div class="main-container">
+        <h3>Insira a url da imagem do seu carro</h3>
+        <input type="text" id="ipt_url" placeholder="Url da imagem do seu carro">
+        <h3>Adicione uma descrição!</h3>
+        <input type="text" id="ipt_descricao">
+        <button onclick="enviar()">Enviar Carro !</button>
+        <button onclick="mostrarPosts()"> Mostrar POSTS</button>
+        <h1>Posts do Blog</h1>
+        <div id="postContainer" class="container"></div>
+    </div>
+</body>
+<script>
+    window.onload = mostrarPosts()
+
+    function enviar() {
+
+        var fkUsuarioVar = sessionStorage.getItem("ID_USUARIO")
+        var nomeVar = sessionStorage.getItem("NOME_USUARIO");
+        var descricaoVar = ipt_descricao.value
+        var ulrVar = ipt_url.value
+
+        console.log(descricaoVar)
+        console.log(ulrVar)
+
+        // Verificando se há algum campo em branco
+        if (
+            descricaoVar == "" ||
+            ulrVar == "" ||
+            nomeVar == ""
+        ) {
+            console.log("Mensagem de erro para todos os campos em branco");
+            finalizarAguardar();
+            return false;
+        } else {
+            console.log("campos preenchidos")
+        }
+
+        // Enviando o valor da nova input
+        fetch("/blog/enviarPost", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                // crie um atributo que recebe o valor recuperado aqui
+                // Agora vá para o arquivo routes/usuario.js
+                fkUsuarioServer: fkUsuarioVar,
+                nomeServer: nomeVar,
+                urlServer: ulrVar,
+                descricaoServer: descricaoVar
+            }),
+        })
+            .then(function (resposta) {
+                console.log("resposta: ", resposta);
+
+                if (resposta.ok) {
+                    console.log("Mensagem de erro para todos os campos em branco");
+
+                    setTimeout(() => {
+                        alert("Post Enviado!")
+                        // window.location = "login.html";
+                    }, "2000");
+                } else {
+                    throw "Houve um erro ao tentar realizar o cadastro!";
+                }
+            })
+            .catch(function (resposta) {
+                console.log(`#ERRO: ${resposta}`);
+            });
+
+        return false;
+    }
+
+ function mostrarPosts() {
+            fetch('/blog/pegarPosts')
+                .then(response => {
+                    if (!response.ok) throw new Error("Erro ao buscar posts");
+                    return response.json();
+                })
+                .then(data => {
+                    const container = document.getElementById('postContainer');
+
+                    console.log(data)
+
+                    if (data.length === 0) {
+                        container.innerHTML = "<p>Nenhum post encontrado.</p>";
+                        return;
+                    }
+
+                    data.forEach(post => {
+                        const card = document.createElement("div");
+                        card.className = "card";
+                        card.innerHTML = `
+                            <h3>${post.nome}</h3>
+                            <img src="${post.img}" alt="Imagem do carro">
+                            <p>${post.descricao}</p>
+                        `;
+
+                        container.appendChild(card);
+                    });
+                })
+                .catch(error => {
+                    console.error("Erro:", error);
+                    document.getElementById('postContainer').innerHTML = "<p>Erro ao carregar posts.</p>";
+                });
+        };
+
+</script>
+
+</html>

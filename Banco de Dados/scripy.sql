@@ -15,14 +15,24 @@ create table dashBoard(
     constraint fk_usuario foreign key (fkusuario) references usuario(id)
 );
 
-insert into dashBoard()
+create table blog(
+	fkusuario int,
+    nome varchar(100),
+    img text,
+    descricao varchar(100),
+    constraint fk_usuario2 foreign key (fkusuario) references usuario(id)
+);
 
-select assertividade from dashBoard;
 
+select * from dashBoard;
 select * from usuario;
+select * from blog;
+
 
 truncate table usuario;
 truncate table dashBoard;
-
+truncate table blog;
 drop database projetoIndividual;
 
+insert into blog (fkusuario ,nome, img, descricao) values
+(1, "rafael", "asdsaidhasdi", "dasijdhsaidashdusaid");
