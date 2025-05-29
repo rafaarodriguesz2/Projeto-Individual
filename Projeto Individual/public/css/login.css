@@ -29,6 +29,35 @@ body{
     font-family: sans-serif;
 }
 
+.btn{
+    width: 100px;
+    height: 30px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 40px;
+    cursor: pointer;
+}
+
+.btn:hover{
+    background-color: white;
+    transition: 0.5s ease;
+}
+
+.btn2{
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+.btn2:hover{
+    background-color: #ffffff00;
+    color: white;
+    transition: 0.5s ease-in-out;
+    box-shadow: 0 1px;
+}
+
 /* NAVBAR */
 
 .ul-navbar li{
@@ -40,7 +69,7 @@ body{
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
-    padding: 0 14%;
+    padding: 0 7%;
 }
 
 .ul-navbar a{
@@ -53,6 +82,28 @@ body{
 .ul-navbar a:hover{
     color: black;
     transition: 0.5s;
+}
+
+#nome_usuario{
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.div_usuario{
+    font-family: sans-serif;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.div_usuario p{
+    margin-right: 8px;
+}
+
+.hide{
+    display: none;
 }
 
 /*Conteudo Principal*/
@@ -71,20 +122,7 @@ input{
     border-bottom: 2px solid black;
     margin: 20px;
 }
-button{
-    width: 100px;
-    height: 30px;
-    border-radius: 50px;
-    border: none;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    margin-top: 40px;
-    cursor: pointer;
-}
 
-button:hover{
-    background-color: white;
-    transition: 0.5s ease;
-}
 
 .form{
     margin-top: 100px;

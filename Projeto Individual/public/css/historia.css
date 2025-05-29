@@ -40,7 +40,7 @@ body{
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
-    padding: 0 14%;
+    padding: 0 7%;
 }
 
 .ul-navbar a{
@@ -55,6 +55,42 @@ body{
     transition: 0.5s;
 }
 
+#nome_usuario{
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.div_usuario{
+    font-family: sans-serif;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.div_usuario p{
+    margin-right: 8px;
+    font-size: 14px;
+}
+
+.hide{
+    display: none;
+}
+
+.btn2{
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+.btn2:hover{
+    background-color: #ffffff00;
+    color: white;
+    transition: 0.5s ease-in-out;
+    box-shadow: 0 1px;
+}
 
 /* Body */
 

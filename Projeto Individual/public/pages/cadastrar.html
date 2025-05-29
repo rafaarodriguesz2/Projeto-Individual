@@ -20,6 +20,10 @@
                 <li><a href="./blog.html">Blog</a></li>
                 <li><a href="./cadastrar.html">CADASTRAR</a></li>
                 <li><a href="./login.html">LOGIN</a></li>
+                <div class="hide div_usuario" id="div_id_usuario">
+                    <p>Usuario:
+                    <p id="nome_usuario"> Usuario</p> <button onclick="limparSessão()" class="btn2">Sair</button>
+                </div>
             </ul>
         </nav>
     </header>
@@ -36,11 +40,25 @@
             <input type="password" id="senha_input">
             <label for="confirmacao_senha_input">Confirme sua senha</label>
             <input type="password" id="confirmacao_senha_input">
-            <button onclick="cadastrar()">Cadastrar</button>
+            <button onclick="cadastrar()" class="btn">Cadastrar</button>
         </div>
     </main>
 </body>
 <script>
+    window.onload = pegarNomeUsuario();
+
+    function pegarNomeUsuario() {
+        if (sessionStorage.getItem("NOME_USUARIO") != null) {
+            document.getElementById("div_id_usuario").classList.remove("hide")
+            nome_usuario.innerHTML = sessionStorage.getItem("NOME_USUARIO")
+        }
+    }
+
+    function limparSessão() {
+        sessionStorage.clear();
+        pegarNomeUsuario();
+        document.getElementById("div_id_usuario").classList.add("hide")
+    }
 
     // Array para armazenar empresas cadastradas para validação de código de ativação 
     let listaEmpresasCadastradas = [];

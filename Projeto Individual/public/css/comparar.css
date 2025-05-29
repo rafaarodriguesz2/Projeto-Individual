@@ -54,7 +54,7 @@ button:hover{
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
-    padding: 0 14%;
+    padding: 0 7%;
 }
 
 .ul-navbar a{
@@ -69,6 +69,23 @@ button:hover{
     transition: 0.5s;
 }
 
+#nome_usuario{
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.div_usuario{
+    font-family: sans-serif;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.div_usuario p{
+    margin-right: 8px;
+}
 /* Css Comparar */
 
 /* Conteudo Principal */

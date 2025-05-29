@@ -36,3 +36,4 @@ drop database projetoIndividual;
 
 insert into blog (fkusuario ,nome, img, descricao) values
 (1, "rafael", "asdsaidhasdi", "dasijdhsaidashdusaid");
+

@@ -20,6 +20,10 @@
                 <li><a href="./pages/blog.html">BLOG</a></li>
                 <li><a href="./pages/cadastrar.html">CADASTRAR</a></li>
                 <li><a href="./pages/login.html">LOGIN</a></li>
+                <div class="hide div_usuario" id="div_id_usuario">
+                    <p>Usuario:
+                    <p id="nome_usuario"> Usuario</p> <button onclick="limparSessão()" class="btn2">Sair</button>
+                </div>
             </ul>
         </nav>
     </header>
@@ -40,7 +44,8 @@
         <!-- Banner você sabe sobre carros -->
         <div class="banner-quiz">
             <div class="div-texto-banner-quiz">
-                <h1>Voce sabe mesmo os valores dos carros? <p>Teste agora e descubra!</p></h1>
+                <h1>Voce sabe mesmo os valores dos carros? <p>Teste agora e descubra!</p>
+                </h1>
             </div>
             <div class="div-img-banner-quiz">
                 <img src="./assets/imgs/verde.png" alt="Porsche" class="porsche-verde">
@@ -52,12 +57,15 @@
         <div class="main-descricoes">
             <div class="div-github">
                 <div class="github">
-                    <p>GITHUB</p>
+                    <a href="https://github.com/rafaarodriguesz2" target="_blank">GITHUB</a>
                 </div>
             </div>
             <div class="div-descricoes">
                 <p class="rafa-dev">Rafa.Dev...</p>
-                <p class="descricao-rafa-dev">Elite Motors é um site que compara os preços de carros em diferentes países, oferecendo uma visão clara das variações de custo entre modelos, marcas e regiões. Além das comparações, o site também conta um pouco sobre a história do desenvolvedor, compartilhando sua paixão por carros e os motivos que o levaram a criar a plataforma.
+                <p class="descricao-rafa-dev">Elite Motors é um site que compara os preços de carros em diferentes
+                    países, oferecendo uma visão clara das variações de custo entre modelos, marcas e regiões. Além das
+                    comparações, o site também conta um pouco sobre a história do desenvolvedor, compartilhando sua
+                    paixão por carros e os motivos que o levaram a criar a plataforma.
                 </p>
             </div>
         </div>
@@ -79,9 +87,27 @@
 </body>
 <script>
 
-    function redirecionarPaginaQuiz(){
+
+    window.onload = pegarNomeUsuario()
+
+    function redirecionarPaginaQuiz() {
         window.location = "./pages/comparar.html"
     }
 
+    function pegarNomeUsuario() {
+        if (sessionStorage.getItem("NOME_USUARIO") != null) {
+            document.getElementById("div_id_usuario").classList.remove("hide")
+            nome_usuario.innerHTML = sessionStorage.getItem("NOME_USUARIO")
+        }
+    }
+
+    function limparSessão() {
+        sessionStorage.clear();
+        pegarNomeUsuario();
+        document.getElementById("div_id_usuario").classList.add("hide")
+    }
+
+
 </script>
+
 </html>

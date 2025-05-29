@@ -20,6 +20,10 @@
                 <li><a href="./blog.html">BLOG</a></li>
                 <li><a href="./cadastrar.html">CADASTRAR</a></li>
                 <li><a href="./login.html">LOGIN</a></li>
+                <div class="hide div_usuario" id="div_id_usuario">
+                    <p>Usuario:
+                    <p id="nome_usuario"> Usuario</p> <button onclick="limparSessão()" class="btn2">Sair</button>
+                </div>
             </ul>
         </nav>
     </header>
@@ -32,11 +36,26 @@
             <input type="email" id="email_input">
             <label for="">Digite sua senha</label>
             <input type="password" id="senha_input">
-            <button onclick="entrar()">Login</button>
+            <button onclick="entrar()" class="btn">Login</button>
         </div>
     </main>
 </body>
 <script>
+
+    window.onload = pegarNomeUsuario();
+
+    function pegarNomeUsuario() {
+        if (sessionStorage.getItem("NOME_USUARIO") != null) {
+            document.getElementById("div_id_usuario").classList.remove("hide")
+            nome_usuario.innerHTML = sessionStorage.getItem("NOME_USUARIO")
+        }
+    }
+
+    function limparSessão() {
+        sessionStorage.clear();
+        pegarNomeUsuario();
+        document.getElementById("div_id_usuario").classList.add("hide")
+    }
 
     function entrar() {
         var emailVar = email_input.value;
@@ -81,7 +100,7 @@
                     sessionStorage.ID_USUARIO = json.id;
 
                     setTimeout(function () {
-                        window.location = "../dashboard/dash.html";
+                        window.location = "../index.html";
                     }, 1000); // apenas para exibir o loading
 
                     console.log(json)
@@ -104,14 +123,11 @@
         })
 
         let valor = sessionStorage.getItem('EMAIL_USUARIO');
-        let idUsuario =  sessionStorage.getItem("ID_USUARIO")
+        let idUsuario = sessionStorage.getItem("ID_USUARIO")
         console.log(valor)
 
         return false;
-
     }
-
-
 </script>
 
 </html>

@@ -30,6 +30,51 @@ body{
     text-align: center;
 }
 
+input{
+    width: 400px;
+    height: 30px;
+    border-radius: 20px;
+}
+
+summary{
+    font-weight: bold;
+    
+}
+
+.btn{
+    width: 200px;
+    height: 50px;
+    border-radius: 50px;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    background-color: #8300e5;
+    margin-top: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0);
+    transition: 0.5s ease;
+    color: black;
+}
+
+.btn2{
+    border-radius: 4px;
+    border: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+.btn2:hover{
+    background-color: #ffffff00;
+    color: white;
+    transition: 0.5s ease-in-out;
+    box-shadow: 0 1px;
+}
+
+/* NAVBAR */
+
 /* NAVBAR */
 
 .ul-navbar li{
@@ -41,7 +86,7 @@ body{
     align-items: center;
     justify-content: space-between;
     flex-direction: row;
-    padding: 0 14%;
+    padding: 0 7%;
 }
 
 .ul-navbar a{
@@ -55,6 +100,29 @@ body{
     color: black;
     transition: 0.5s;
 }
+
+#nome_usuario{
+    font-family: sans-serif;
+    font-size: 14px;
+}
+
+.div_usuario{
+    font-family: sans-serif;
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.div_usuario p{
+    margin-right: 8px;
+}
+
+.hide{
+    display: none;
+}
+
 
 /* Body */
 
@@ -89,5 +157,19 @@ body{
     flex-wrap: wrap;
     gap: 16px;
     color: black;
+    justify-content: center;
+    align-items: center;
 }
+
+.div_criar_post{
+    width: 600px;
+    height: 250px;
+    background-color: white;
+    margin-bottom: 50px;
+    color: black;
+    border-radius: 20px;
+
+}
+
+
 
