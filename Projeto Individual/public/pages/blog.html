@@ -74,12 +74,12 @@
         // Verificando se há algum campo em branco
         if ( descricaoVar == "" || urlVar == "" || nomeVar == "") {
             alert("Mensagem de erro para todos os campos em branco");
-            return false;
+            return ;
         }
         
         if(fkUsuarioVar == ""){
             alert("Faça login antes de fazer um post!")
-            return false;
+            return ;
         }
 
         // Enviando o valor da nova input

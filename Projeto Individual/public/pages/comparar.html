@@ -25,7 +25,7 @@
             <div class="card">
                 <div id="resultadoEua2"></div>
                 <h1 id="h1_renda_mensal">Quanto custa esse carro nos EUA?</h1>
-                <input type="text" id="ipt_preco_chutado" placeholder="Quanto você acha que custa esse carro?" >
+                <input type="text" id="ipt_preco_chutado" placeholder="Quanto você acha que custa esse carro?">
                 <h1 id="h1_renda_mensal">Escolha o valor da sua renda mensal</h1>
                 <select id="ipt_select">
                     <option value="salarioMin">Salario Mínimo</option>
@@ -80,25 +80,27 @@
             <div class="div-comparar-preco">
                 <button onclick="outroCarro()" class="btn">Outro Carro</button>
                 <button onclick="sair()" class="btn">Sair</button>
-
                 <button onclick="dash()" class="btn">Faça Login e Veja os Graficos!</button>
             </div>
-
         </div>
     </div>
 
     <div id="div_dash" class="hide">
         <div class="div_dash">
-            <h2>Bom dia <h2 id="b_usuario">Usuario</h2></h2>
+            <h2>Bom dia <h2 id="b_usuario">Usuario</h2>
+            </h2>
             <h1>Dashboards</h1>
             <div id="div_dash" class="div_dashBoard">
-                <div id="graficos">
-                </div>
+                <div id="graficos"></div>
             </div>
+
+            <div id="listaDeChutes"></div>
+
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 </body>
 <script src="../js/comparar.js"></script>
+
 </html>
