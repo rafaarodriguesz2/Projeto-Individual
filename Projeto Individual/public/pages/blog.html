@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/blog.css">
+    <script src="../js/sessao.js"></script>
 </head>
 
 <body>
@@ -29,15 +30,16 @@
     </header>
     <div class="main-container">
         <Details>
-            <summary>Crie seu Post!</summary>
+            <summary>Clique aqui para criar seu post!</summary>
             <div class="div_criar_post">
-                <h3>Insira a url da imagem do seu carro</h3>
-                <input type="text" id="ipt_url" placeholder="Url da imagem do seu carro">
-                <h3>Adicione uma descrição!</h3>
-                <input type="text" id="ipt_descricao" placeholder="Adicione uma descrição ">
-                <br>
-                <button onclick="enviar()" class="btn">Enviar Carro !</button>
-                <button onclick="mostrarPosts()" class="btn"> Mostrar POSTS</button>
+                <form action="" id="formBlog">
+                    <h3>Insira a url da imagem do seu carro</h3>
+                    <input type="text" id="ipt_url" placeholder="Url da imagem do seu carro">
+                    <h3>Adicione uma descrição!</h3>
+                    <input type="text" id="ipt_descricao" placeholder="Adicione uma descrição ">
+                    <br>
+                    <button onclick="enviar()" class="btn">Enviar Carro !</button>
+                </form>
             </div>
         </Details>
         <h1>Posts do Blog</h1>
@@ -63,26 +65,21 @@
     }
 
     function enviar() {
-
+        validarSessao();
         var fkUsuarioVar = sessionStorage.getItem("ID_USUARIO")
         var nomeVar = sessionStorage.getItem("NOME_USUARIO");
         var descricaoVar = ipt_descricao.value
-        var ulrVar = ipt_url.value
-
-        console.log(descricaoVar)
-        console.log(ulrVar)
+        var urlVar = ipt_url.value
 
         // Verificando se há algum campo em branco
-        if (
-            descricaoVar == "" ||
-            ulrVar == "" ||
-            nomeVar == ""
-        ) {
-            console.log("Mensagem de erro para todos os campos em branco");
-            finalizarAguardar();
+        if ( descricaoVar == "" || urlVar == "" || nomeVar == "") {
+            alert("Mensagem de erro para todos os campos em branco");
             return false;
-        } else {
-            console.log("campos preenchidos")
+        }
+        
+        if(fkUsuarioVar == ""){
+            alert("Faça login antes de fazer um post!")
+            return false;
         }
 
         // Enviando o valor da nova input
@@ -96,7 +93,7 @@
                 // Agora vá para o arquivo routes/usuario.js
                 fkUsuarioServer: fkUsuarioVar,
                 nomeServer: nomeVar,
-                urlServer: ulrVar,
+                urlServer: urlVar,
                 descricaoServer: descricaoVar
             }),
         })
@@ -108,8 +105,8 @@
 
                     setTimeout(() => {
                         alert("Post Enviado!")
-                        // window.location = "login.html";
-                    }, "2000");
+                        mostrarPosts();
+                    }, "100");
                 } else {
                     throw "Houve um erro ao tentar realizar o cadastro!";
                 }
@@ -117,7 +114,6 @@
             .catch(function (resposta) {
                 console.log(`#ERRO: ${resposta}`);
             });
-
         return false;
     }
 
@@ -132,6 +128,8 @@
 
                 console.log(data)
 
+                container.innerHTML = ``
+
                 if (data.length === 0) {
                     container.innerHTML = "<p>Nenhum post encontrado.</p>";
                     return;
@@ -145,7 +143,6 @@
                             <img src="${post.img}" alt="Imagem do carro">
                             <p>${post.descricao}</p>
                         `;
-
                     container.appendChild(card);
                 });
             })

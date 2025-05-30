@@ -41,6 +41,9 @@
             <label for="confirmacao_senha_input">Confirme sua senha</label>
             <input type="password" id="confirmacao_senha_input">
             <button onclick="cadastrar()" class="btn">Cadastrar</button>
+            <div class="div_ja_tem_cadastro">
+                <p>Já tem conta?</p><a href="../pages/login.html">Faça Login</a>
+            </div>
         </div>
     </main>
 </body>
@@ -75,56 +78,54 @@
 
         console.log(nomeVar)
         // Verificando se há algum campo em branco
-        if (
-            nomeVar == "" ||
-            emailVar == "" ||
-            senhaVar == "" ||
-            confirmacaoSenhaVar == ""
-        ) {
-            console.log("Mensagem de erro para todos os campos em branco");
-
+        if ( nomeVar == "" || emailVar == "" || senhaVar == "" || confirmacaoSenhaVar == ""){
+            alert("Mensagem de erro para campos em branco ");
             finalizarAguardar();
             return false;
-        } else {
-            console.log("campos preenchidos")
+        }else if (senhaVar !== confirmacaoSenhaVar) {
+            alert("As senhas não coincidem.");
+            return false; // Impede o envio do formulário
+        }else if (senhaVar.length < 6) {
+            alert("A senha deve ter no mínimo 6 caracteres.")
+            return false;
+        }else{
+            alert("Usuario Cadastrado com sucesso!")
         }
 
-        // Enviando o valor da nova input
-        fetch("/usuarios/cadastrar", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                // crie um atributo que recebe o valor recuperado aqui
-                // Agora vá para o arquivo routes/usuario.js
-                nomeServer: nomeVar,
-                emailServer: emailVar,
-                senhaServer: senhaVar,
-            }),
-        })
-            .then(function (resposta) {
-                console.log("resposta: ", resposta);
+    // Enviando o valor da nova input
+    fetch("/usuarios/cadastrar", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+            // crie um atributo que recebe o valor recuperado aqui
+            // Agora vá para o arquivo routes/usuario.js
+            nomeServer: nomeVar,
+            emailServer: emailVar,
+            senhaServer: senhaVar,
+        }),
+    })
+        .then(function (resposta) {
+            console.log("resposta: ", resposta);
 
-                if (resposta.ok) {
-                    console.log("Mensagem de erro para todos os campos em branco");
+            if (resposta.ok) {
+                setTimeout(() => {
+                    window.location = "login.html";
+                }, 1000);
 
-                    setTimeout(() => {
-                        window.location = "login.html";
-                    }, "2000");
-
-                    limparFormulario();
-                    finalizarAguardar();
-                } else {
-                    throw "Houve um erro ao tentar realizar o cadastro!";
-                }
-            })
-            .catch(function (resposta) {
-                console.log(`#ERRO: ${resposta}`);
+                limparFormulario();
                 finalizarAguardar();
-            });
+            } else {
+                throw "Houve um erro ao tentar realizar o cadastro!";
+            }
+        })
+        .catch(function (resposta) {
+            console.log(`#ERRO: ${resposta}`);
+            finalizarAguardar();
+        });
 
-        return false;
+    return false;
     }
 
     // Listando empresas cadastradas 

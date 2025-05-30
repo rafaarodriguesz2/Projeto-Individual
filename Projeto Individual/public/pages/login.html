@@ -34,9 +34,12 @@
             <h2>Login</h2>
             <label for="">Digite seu e-mail cadastrado</label>
             <input type="email" id="email_input">
-            <label for="">Digite sua senha</label>
+            <label for="">Digite sua senha cadastrada</label>
             <input type="password" id="senha_input">
             <button onclick="entrar()" class="btn">Login</button>
+            <div class="div_nao_tem_cadastro">
+                <p>Não tem conta?</p><a href="../pages/cadastrar.html">Cadastrar</a>
+            </div>
         </div>
     </main>
 </body>
@@ -62,8 +65,7 @@
         var senhaVar = senha_input.value;
 
         if (emailVar == "" || senhaVar == "") {
-            cardErro.style.display = "block"
-            mensagem_erro.innerHTML = "(Mensagem de erro para todos os campos em branco)";
+            alert("Os campos não podem ser nulos")
             return false;
         }
         else {
@@ -109,9 +111,7 @@
                 console.log()
 
             } else {
-
-                console.log("Houve um erro ao tentar realizar o login!");
-
+                alert("Houve um erro ao tentar realizar o login!");
                 resposta.text().then(texto => {
                     console.error(texto);
                     finalizarAguardar(texto);

@@ -1,3 +1,4 @@
+
 let divResultados = document.getElementById("div_resultado_chute");
 let divResultados2 = document.getElementById("div_resultado_chute2");
 let divResultados3 = document.getElementById("div_resultado_chute3");
@@ -134,6 +135,7 @@ function resultados4() {
 function outroCarro() {
     divChute.classList.remove("hide")
     divPrincipal.classList.add("hide")
+    divDash.classList.add("hide")
     segundaPagina();
     iniciar();
 }
@@ -199,8 +201,18 @@ function sair() {
     window.location = "../index.html"
 }
 
+
 function dash() {
-    divDash.classList.remove("hide")
+    let nome = sessionStorage.getItem("NOME_USUARIO")
+    let id = sessionStorage.getItem("ID_USUARIO")
+    let email = sessionStorage.getItem("EMAIL_USUARIO")
+    if (nome == null && id == null && email == null) {
+        window.location = "../pages/login.html"
+    }else{
+        b_usuario.innerHTML = nome
+        divDash.classList.remove("hide")
+        chamarGraficos();
+    }
 }
 
 function enviarAssertividade() {

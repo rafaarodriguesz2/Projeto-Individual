@@ -1,14 +1,11 @@
 // sessão
 function validarSessao() {
-    var email = sessionStorage.EMAIL_USUARIO;
-    var nome = sessionStorage.NOME_USUARIO;
-
-    var b_usuario = document.getElementById("b_usuario");
-
-    if (email != null && nome != null) {
-        b_usuario.innerHTML = nome;
-    } else {
-        window.location = "../login.html";
+    let nome = sessionStorage.getItem("NOME_USUARIO")
+    let id = sessionStorage.getItem("ID_USUARIO")
+    let email = sessionStorage.getItem("EMAIL_USUARIO")
+    if (nome == null && id == null && email == null) {
+        alert("Faça login antes disso!")
+        return;
     }
 }
 
@@ -17,20 +14,7 @@ function limparSessao() {
     window.location = "../login.html";
 }
 
-// carregamento (loading)
-function aguardar() {
-    var divAguardar = document.getElementById("div_aguardar");
-    divAguardar.style.display = "flex";
+function limparFormulario() {
+    const form = document.getElementById("meuFormulario");
+    form.reset();
 }
-
-function finalizarAguardar(texto) {
-    var divAguardar = document.getElementById("div_aguardar");
-    divAguardar.style.display = "none";
-
-    var divErrosLogin = document.getElementById("div_erros_login");
-    if (texto) {
-        divErrosLogin.style.display = "flex";
-        divErrosLogin.innerHTML = texto;
-    }
-}
-

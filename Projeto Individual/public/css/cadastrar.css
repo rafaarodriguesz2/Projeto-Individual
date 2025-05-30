@@ -140,3 +140,10 @@ input{
 .form h2{
     margin-bottom: 40px;
 }
+
+.div_ja_tem_cadastro{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
