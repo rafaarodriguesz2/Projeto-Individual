@@ -15,6 +15,7 @@ let numeroAleatorio = 0;
 let precoChutado = 0;
 let precoReal = 0;
 let erro = 0;
+let numAntigo = 0;
 let carrosBrasil = null;
 let carrosEua = null;
 
@@ -109,15 +110,26 @@ const listaCarrosEua = [
 
 function iniciar() {
     numeroAleatorio = Math.floor(Math.random() * 8);
+
+    while(numeroAleatorio == numAntigo){
+        numeroAleatorio = Math.floor(Math.random() * 8);
+        console.log("Refez")
+    }
+
     divChute.classList.remove("hide");
     divInicio.classList.add("hide");
     console.log(numeroAleatorio);
     segundaPagina();
 }
 
+
+
 function segundaPagina() {
     carrosBrasil = listaCarrosBrasil[numeroAleatorio];
     carrosEua = listaCarrosEua[numeroAleatorio];
+
+    numAntigo = numeroAleatorio;
+    console.log(numAntigo);
 
     resultadoEua2.innerHTML = `
     <div class="titulo-segunda-pagina">
