@@ -1,30 +1,5 @@
 var dashModel = require('../models/dashModel');
 
-function enviarDesempenhoUsuario(req, res) {
-    // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
-    var { assertividadeServer } = req.body;
-    var { usuarioServer } = req.body;
-
-    console.log(assertividadeServer)
-    console.log(assertividadeServer)
-
-    // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    dashModel.enviarDados(assertividadeServer, usuarioServer)
-        .then(
-            function (resultado) {
-                res.json(resultado);
-            }
-        ).catch(
-            function (erro) {
-                console.log(erro);
-                console.log(
-                    "\nHouve um erro ao enviar assertividade para o banco! Erro: ",
-                    erro.sqlMessage
-                );
-                res.status(500).json(erro.sqlMessage);
-            }
-        );
-}
 
 function enviarChutesDoUsuario(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
@@ -55,7 +30,7 @@ function enviarChutesDoUsuario(req, res) {
             }
         );
 
-        pegarListaDeChutes()
+        return false
 }
 
 function pegarListaDeChutes(req, res) {
@@ -77,7 +52,6 @@ function pegarListaDeChutes(req, res) {
 }
 
 module.exports = {
-    enviarDesempenhoUsuario,
     enviarChutesDoUsuario,
     pegarListaDeChutes
 }

@@ -122,6 +122,10 @@ summary{
     display: none;
 }
 
+.inicio-blog{
+    width: 800px;
+    text-align: justify;
+}
 
 /* Body */
 
@@ -133,12 +137,10 @@ summary{
 }
 
 .card {
-    border: 1px solid #ccc;
     border-radius: 12px;
     padding: 16px;
     margin: 10px;
     max-width: 300px;
-    background-color: #f8f8f8;
 }
 
 .card img {
@@ -162,12 +164,19 @@ summary{
 
 .div_criar_post{
     width: 600px;
-    height: 250px;
+    height: 550px;
     background-color: white;
     margin-bottom: 50px;
     color: black;
     border-radius: 20px;
+}
 
+.div_criar_post form{
+    padding-top: 10px;
+}
+
+.div_criar_post p{
+    margin: 5px;
 }
 
 

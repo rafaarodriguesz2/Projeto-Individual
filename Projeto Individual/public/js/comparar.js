@@ -146,7 +146,7 @@ function calculoAssertividade() {
     resultadoDoChute.innerHTML = `
             <h1>Você teve uma assertividade de ${assertividade} % no seu chute!</h1>
         `;
-    enviarAssertividade();
+    // enviarAssertividade();
 }
 
 function precoNosEua() {
@@ -181,6 +181,7 @@ function resultadoTempoDeCompra() {
 }
 
 function resultados() {
+    enviarChuteUsuario();
     divResultados.classList.add("hide");
     divResultados2.classList.remove("hide");
     precoNosEua();
@@ -200,7 +201,7 @@ function resultados3() {
 }
 
 function resultados4() {
-    enviarChuteUsuario();
+    pegarListaDeChutes(sessionStorage.ID_USUARIO);
     divResultados4.classList.add("hide");
     divPrincipal.classList.remove("hide");
     terceiraPagina();
@@ -292,90 +293,6 @@ function dash() {
     }
 }
 
-function enviarAssertividade() {
-    // Agora vá para o método fetch logo abaixo
-    var assertividadeVar = assertividade;
-    var usuarioVar = sessionStorage.ID_USUARIO;
-
-    // Enviando o valor da nova input
-    fetch("/dash/resultadosUsuario", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            // crie um atributo que recebe o valor recuperado aqui
-            // Agora vá para o arquivo routes/usuario.js
-            assertividadeServer: assertividadeVar,
-            usuarioServer: usuarioVar,
-        }),
-    })
-        .then(function (resposta) {
-            console.log("resposta: ", resposta);
-
-            if (resposta.ok) {
-                setTimeout(() => {
-                    console.log("Assertividade", assertividadeVar);
-                    console.log("idUsuario", usuarioVar);
-                }, "2000");
-            } else {
-                throw "Houve um erro ao tentar realizar o cadastro!";
-            }
-        })
-        .catch(function (resposta) {
-            console.log(`#ERRO: ${resposta}`);
-        });
-
-    return false;
-}
-
-/*Chart JS*/
-
-const ctx = document.getElementById("myChart");
-const ctx2 = document.getElementById("myChart2");
-
-new Chart(ctx, {
-    type: "bar",
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [
-            {
-                label: "# of Votes",
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1,
-            },
-        ],
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true,
-            },
-        },
-    },
-});
-
-new Chart(ctx2, {
-    type: "line",
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [
-            {
-                label: "# of Votes",
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1,
-            },
-        ],
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true,
-            },
-        },
-    },
-});
-
 b_usuario.innerHTML = sessionStorage.NOME_USUARIO;
 
 let proximaAtualizacao;
@@ -415,7 +332,7 @@ function obterDadosGrafico(idUsuario) {
 // A função *plotarGrafico* também invoca a função *atualizarGrafico*
 function plotarGrafico(resposta, idUsuario) {
     console.log("iniciando plotagem do gráfico...");
-    console.log("essa é a resposta", resposta[2].assertividade);
+    // console.log("essa é a resposta", resposta[2].assertividade);
     // Criando estrutura para plotar gráfico - labels
     let labels = [];
 
@@ -477,74 +394,7 @@ function plotarGrafico(resposta, idUsuario) {
 //     Se quiser alterar a busca, ajuste as regras de negócio em src/controllers
 //     Para ajustar o "select", ajuste o comando sql em src/models
 
-function atualizarGrafico(idUsuario, dados, myChart) {
-    fetch(`/medidas/tempo-real/${idUsuario}`, { cache: "no-store" })
-        .then(function (response) {
-            if (response.ok) {
-                response.json().then(function (novoRegistro) {
-                    // obterdados(idUsuario);
-                    // alertar(novoRegistro, idUsuario);
-                    console.log(`Dados recebidos: ${JSON.stringify(novoRegistro)}`);
-                    console.log(`Dados atuais do gráfico:`);
-                    console.log(dados);
-
-                    let avisoCaptura = document.getElementById(
-                        `avisoCaptura${idUsuario}`
-                    );
-                    avisoCaptura.innerHTML = "";
-
-                    if (
-                        novoRegistro[0].momento_grafico ==
-                        dados.labels[dados.labels.length - 1]
-                    ) {
-                        console.log(
-                            "---------------------------------------------------------------"
-                        );
-                        console.log(
-                            "Como não há dados novos para captura, o gráfico não atualizará."
-                        );
-                        avisoCaptura.innerHTML =
-                            "<i class='fa-solid fa-triangle-exclamation'></i> Foi trazido o dado mais atual capturado pelo sensor. <br> Como não há dados novos a exibir, o gráfico não atualizará.";
-                        console.log("Horário do novo dado capturado:");
-                        console.log(novoRegistro[0].momento_grafico);
-                        console.log("Horário do último dado capturado:");
-                        console.log(dados.labels[dados.labels.length - 1]);
-                        console.log(
-                            "---------------------------------------------------------------"
-                        );
-                    } else {
-                        // tirando e colocando valores no gráfico
-                        dados.labels.shift(); // apagar o primeiro
-                        dados.labels.push(novoRegistro[0].momento_grafico); // incluir um novo momento
-
-                        dados.datasets[0].data.shift(); // apagar o primeiro de umidade
-                        dados.datasets[0].data.push(novoRegistro[0].umidade); // incluir uma nova medida de umidade
-
-                        dados.datasets[1].data.shift(); // apagar o primeiro de temperatura
-                        dados.datasets[1].data.push(novoRegistro[0].temperatura); // incluir uma nova medida de temperatura
-
-                        myChart.update();
-                    }
-
-                    // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                    proximaAtualizacao = setTimeout(
-                        () => atualizarGrafico(idUsuario, dados, myChart),
-                        2000
-                    );
-                });
-            } else {
-                console.error("Nenhum dado encontrado ou erro na API");
-                // Altere aqui o valor em ms se quiser que o gráfico atualize mais rápido ou mais devagar
-                proximaAtualizacao = setTimeout(
-                    () => atualizarGrafico(idUsuario, dados, myChart),
-                    2000
-                );
-            }
-        })
-        .catch(function (error) {
-            console.error(`Erro na obtenção dos dados p/ gráfico: ${error.message}`);
-        });
-}
+// 
 
 function enviarChuteUsuario() {
     // Agora vá para o método fetch logo abaixo
@@ -588,8 +438,6 @@ function enviarChuteUsuario() {
         .catch(function (resposta) {
             console.log(`#ERRO: ${resposta}`);
         });
-
-    pegarListaDeChutes(idUsuario);
     return false;
 }
 
@@ -611,27 +459,29 @@ function pegarListaDeChutes(idUsuario) {
                 container.innerHTML = "<p>Nenhum post encontrado.</p>";
                 return;
             }
-
+            let i = data.length
             data.forEach(post => {
                 const card = document.createElement("div");
+                
                 card.className = "div-resultados-2";
                 card.innerHTML = `
-                            <h3>${post.id}º Chute</h3>
+                            <h3>${i}º Chute</h3>
                             <div class="elementos-row">
                                 <img src="${post.img}" alt="Imagem do carro" class="img-resultado2">
                                 <div class="elementos-column">
-                                    <p>Asssertividade: ${post.assertividade}</p>
+                                    <p>Asssertividade: ${post.assertividade} %</p>
                                     <progress value="${post.assertividade}" max="100" class="progress"></progress>
                                 </div>
                             </div>
                             <div class="elementos-row-p" style="margin-top: 10px">
                                 <p class="margin">Nome:${post.nomeCarro} </p>
-                                <p class="margin">Preço Chutado:${post.precoChutado.toLocaleString("pt-BR")}</p>
-                                <p class="margin">Preço Real:${post.precoReal.toLocaleString("pt-BR")} </p>
+                                <p class="margin">Preço Chutado: $${post.precoChutado.toLocaleString("pt-BR")}</p>
+                                <p class="margin">Preço Real: $${post.precoReal.toLocaleString("pt-BR")} </p>
                             </div>
                             <hr>
                         `;
                 container.appendChild(card);
+                i--
             });
         })
         .catch(error => {
@@ -639,3 +489,50 @@ function pegarListaDeChutes(idUsuario) {
             document.getElementById('postContainer').innerHTML = "<p>Erro ao carregar posts.</p>";
         });
 }
+
+/*Chart JS*/
+
+const ctx = document.getElementById("myChart");
+const ctx2 = document.getElementById("myChart2");
+
+new Chart(ctx, {
+    type: "bar",
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [
+            {
+                label: "# of Votes",
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1,
+            },
+        ],
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+    },
+});
+
+new Chart(ctx2, {
+    type: "line",
+    data: {
+        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        datasets: [
+            {
+                label: "# of Votes",
+                data: [12, 19, 3, 5, 2, 3],
+                borderWidth: 1,
+            },
+        ],
+    },
+    options: {
+        scales: {
+            y: {
+                beginAtZero: true,
+            },
+        },
+    },
+});

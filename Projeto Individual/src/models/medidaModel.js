@@ -4,11 +4,7 @@ function buscarUltimasMedidas(idUsuario, limite_linhas) {
 
     console.log(idUsuario)
 
-    var instrucaoSql = `SELECT 
-                    assertividade
-                    FROM dashBoard
-                    WHERE fkusuario = ${idUsuario}
-                    ORDER BY id DESC LIMIT ${limite_linhas}`;
+    var instrucaoSql = `select assertividade from listaDeChutes where fkusuario = ${idUsuario} order by id desc limit ${limite_linhas};`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);
@@ -16,10 +12,7 @@ function buscarUltimasMedidas(idUsuario, limite_linhas) {
 
 function buscarMedidasEmTempoReal(idUsuario) {
 
-    var instrucaoSql = `SELECT 
-                        assertividade 
-                        FROM dashBoard WHERE fkusuario = ${idUsuario} 
-                    ORDER BY id DESC LIMIT 1`;
+    var instrucaoSql = `select assertividade from listaDeChutes where fkusuario = ${idUsuario} order by id desc limit 1;`;
 
     console.log("Executando a instrução SQL: \n" + instrucaoSql);
     return database.executar(instrucaoSql);

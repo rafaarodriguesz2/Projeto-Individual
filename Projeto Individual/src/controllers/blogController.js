@@ -4,13 +4,18 @@ var blogModel = require("../models/blogModel");
 
 function enviarPost(req, res) {
     // Crie uma variável que vá recuperar os valores do arquivo cadastro.html
+    var modelo = req.body.modeloServer
+    var ano = req.body.anoServer
+    var preco = req.body.precoServer
+    var potencia = req.body.potenciaServer
+    var descricao = req.body.descricaoServer
+    var url = req.body.urlServer
+    var nome = req.body.nomeServer
     var fkusuario = req.body.fkUsuarioServer
-    var nome = req.body.nomeServer;
-    var url = req.body.urlServer;
-    var descricao = req.body.descricaoServer;
+
 
     // Passe os valores como parâmetro e vá para o arquivo usuarioModel.js
-    blogModel.enviar(fkusuario, nome, url, descricao)
+    blogModel.enviar(modelo, ano, preco, potencia,descricao, url, nome, fkusuario)
         .then(
             function (resultado) {
                 res.json(resultado);
