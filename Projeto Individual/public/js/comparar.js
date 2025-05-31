@@ -175,8 +175,8 @@ function resultadoTempoDeCompra() {
             ? salarioMinimoBrasil
             : salarioMinimoEua
         }💸</h1>
-            <h1>Nos Eua você demoraria em média de ${tempoParaComprarEua} anos para comprar esse veículo </h1>
-            <h1>No Brasil você demoraria em média de ${tempoParaComprarBrasil} anos para comprar esse veículo </h1>
+            <h1>Nos Eua você demoraria em média de ${tempoParaComprarEua.toFixed(1)} anos para comprar esse veículo </h1>
+            <h1>No Brasil você demoraria em média de ${tempoParaComprarBrasil.toFixed(1)} anos para comprar esse veículo </h1>
         `;
 }
 
@@ -235,13 +235,10 @@ function calcularTempoDeCompra() {
     tempoParaComprarEua = carrosEua.preco / salarioMinimoEua;
     tempoParaComprarBrasil = carrosBrasil.preco / salarioMinimoBrasil;
 
-    if (tempoParaComprarBrasil >= 12) {
-        tempoParaComprarBrasil = Math.floor(tempoParaComprarBrasil / 12).toFixed(0);
-    }
+    tempoParaComprarBrasil = tempoParaComprarBrasil / 12;
 
-    if (tempoParaComprarEua >= 12) {
-        tempoParaComprarEua = Math.floor(tempoParaComprarEua / 12).toFixed(0);
-    }
+    tempoParaComprarEua = tempoParaComprarEua / 12;
+
 }
 
 function terceiraPagina() {
@@ -256,7 +253,7 @@ function terceiraPagina() {
         <p class="descricao">Com uma renda de R$ ${salarioMinimoBrasil.toLocaleString(
         "pt-BR"
     )}</p> 
-        <p class="descricao">Serão necessarios ${tempoParaComprarBrasil} anos para comprar esse carro<p>
+        <p class="descricao">Serão necessarios ${tempoParaComprarBrasil.toFixed(1)} anos para comprar esse carro<p>
         <a href="${carrosBrasil.link}" target="_blank">Link</a>
         `;
 
@@ -271,7 +268,7 @@ function terceiraPagina() {
         <p class="descricao">Com uma renda de $ ${salarioMinimoEua.toLocaleString(
         "pt-BR"
     )}</p> 
-        <p class="descricao">Serão necessarios ${tempoParaComprarEua} anos para comprar esse carro<p>
+        <p class="descricao">Serão necessarios ${tempoParaComprarEua.toFixed(1)} anos para comprar esse carro<p>
         <a href="${carrosEua.link}" target="_blank">Link</a>
         `;
 }
@@ -462,7 +459,7 @@ function pegarListaDeChutes(idUsuario) {
             let i = data.length
             data.forEach(post => {
                 const card = document.createElement("div");
-                
+
                 card.className = "div-resultados-2";
                 card.innerHTML = `
                             <h3>${i}º Chute</h3>
