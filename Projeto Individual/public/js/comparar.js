@@ -143,10 +143,15 @@ function segundaPagina() {
 // FALAR NO PROJETO QUE SE O CHUTE FOI MUITO DISTANTE ELE VAI CONSIDERAR COMO 0% DE ASSERTIVIDADE
 
 function chutarPreco() {
+    //pega o valor chutado
     precoChutado = Number(document.getElementById("ipt_preco_chutado").value);
+    //pega o valor real
     precoReal = carrosEua.preco;
+    //pela função math.abs = math. absolut que ele pega o valor absoluto, ou seja tanto faz se o valor inicial é maior ou menor
     erro = Math.abs(precoChutado - precoReal);
+    // faz a porcentagem de erro em relação ao preço eral
     erroPercentual = (erro / precoReal) * 100;
+    // como sabemos a porcentagem do erro conseguimos descobrir a porcentagem de assertividade, e se o erro for negativo pelo math.max ele pega o valor maior, que no caso seria 0;
     assertividade = Math.max(0, 100 - erroPercentual).toFixed(2);
     divResultados.classList.remove("hide");
     divChute.classList.add("hide");
@@ -368,7 +373,6 @@ function plotarGrafico(resposta, idUsuario) {
 
     // Inserindo valores recebidos em estrutura para plotar o gráfico
     for (i = 0; i < resposta.length; i++) {
-        var registro = resposta[i];
         labels.push(resposta[i].assertividade);
         dados.datasets[0].data.push(resposta[i].assertividade);
         // dados.datasets[1].data.push(registro.temperatura);
@@ -498,50 +502,3 @@ function pegarListaDeChutes(idUsuario) {
             document.getElementById('postContainer').innerHTML = "<p>Erro ao carregar posts.</p>";
         });
 }
-
-/*Chart JS*/
-
-const ctx = document.getElementById("myChart");
-const ctx2 = document.getElementById("myChart2");
-
-new Chart(ctx, {
-    type: "bar",
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [
-            {
-                label: "# of Votes",
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1,
-            },
-        ],
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true,
-            },
-        },
-    },
-});
-
-new Chart(ctx2, {
-    type: "line",
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [
-            {
-                label: "# of Votes",
-                data: [12, 19, 3, 5, 2, 3],
-                borderWidth: 1,
-            },
-        ],
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true,
-            },
-        },
-    },
-});
