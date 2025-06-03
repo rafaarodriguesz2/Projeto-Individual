@@ -6,6 +6,8 @@ let divPrincipal = document.getElementById("div_principal");
 let divChute = document.getElementById("div_chute_preco");
 let divInicio = document.getElementById("div_inicio");
 let divDash = document.getElementById("div_dash");
+let tipoTempoBrasil = "anos "
+let tipoTempoEua = "anos "
 let salarioMinimoBrasil = 0;
 let salarioMinimoEua = 0;
 let salarioEscolhido = 0;
@@ -187,13 +189,14 @@ function precoNoBrasil() {
 }
 
 function resultadoTempoDeCompra() {
+    
     resultadoDoChute4.innerHTML = `
             <h1>Com uma renda de ${Number.isNaN(salarioEscolhido)
             ? salarioMinimoBrasil
             : salarioMinimoEua
         }💸</h1>
-            <h1>Nos Eua você demoraria em média de ${tempoParaComprarEua.toFixed(1)} anos para comprar esse veículo </h1>
-            <h1>No Brasil você demoraria em média de ${tempoParaComprarBrasil.toFixed(1)} anos para comprar esse veículo </h1>
+            <h1>Nos Eua você demoraria em média de ${tempoParaComprarEua.toFixed(1)} ${tipoTempoEua} para comprar esse veículo </h1>
+            <h1>No Brasil você demoraria em média de ${tempoParaComprarBrasil.toFixed(1)} ${tipoTempoBrasil} para comprar esse veículo </h1>
         `;
 }
 
@@ -256,6 +259,14 @@ function calcularTempoDeCompra() {
 
     tempoParaComprarEua = tempoParaComprarEua / 12;
 
+    if(tempoParaComprarBrasil < 1){
+        tempoParaComprarBrasil = tempoParaComprarBrasil * 10
+        tipoTempoBrasil = "meses "
+    }
+    if(tempoParaComprarEua < 1){
+        tempoParaComprarEua = tempoParaComprarEua * 10
+        tipoTempoEua = "meses "
+    }
 }
 
 function terceiraPagina() {
@@ -270,7 +281,7 @@ function terceiraPagina() {
         <p class="descricao">Com uma renda de R$ ${salarioMinimoBrasil.toLocaleString(
         "pt-BR"
     )}</p> 
-        <p class="descricao">Serão necessarios ${tempoParaComprarBrasil.toFixed(1)} anos para comprar esse carro<p>
+        <p class="descricao">Serão necessarios ${tempoParaComprarBrasil.toFixed(1)} ${tipoTempoBrasil} para comprar esse carro<p>
         <a href="${carrosBrasil.link}" target="_blank">Link</a>
         `;
 
@@ -285,7 +296,7 @@ function terceiraPagina() {
         <p class="descricao">Com uma renda de $ ${salarioMinimoEua.toLocaleString(
         "pt-BR"
     )}</p> 
-        <p class="descricao">Serão necessarios ${tempoParaComprarEua.toFixed(1)} anos para comprar esse carro<p>
+        <p class="descricao">Serão necessarios ${tempoParaComprarEua.toFixed(1)} ${tipoTempoEua} para comprar esse carro<p>
         <a href="${carrosEua.link}" target="_blank">Link</a>
         `;
 }
